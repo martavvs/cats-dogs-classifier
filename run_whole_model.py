@@ -16,7 +16,7 @@ from predict import run_example
 parser = argparse.ArgumentParser(description='NN')
 parser.add_argument('--id', type=str, default='default', help='Experiment ID')
 parser.add_argument('--seed', type=int, default=123, help='Random seed')
-parser.add_argument('--dir', type=str,  default='exp_data/', help='Directory of dataset')
+parser.add_argument('--dir', type=str,  default='data/', help='Directory of dataset')
 parser.add_argument('--batch-size', type=int, default=16, metavar='SIZE', help='Batch size')
 parser.add_argument('--epochs', type=int, default=20, metavar='NUMBER', help='Number of epochs')
 parser.add_argument('--train-size', type=float, default=0.8, help='Training/Test division')
@@ -61,8 +61,12 @@ def run(args, model_name, train_dir, filedir,
     if eval:
         for filename in os.listdir(filedir):
             run_example(model, filedir+filename,HEIGTH,WIDTH)
+#
+# run(args, model_name, train_dir, filedir,
+#         HEIGTH, WIDTH, BATCH_SIZE, EPOCHS, l_r,
+#         validation_dir,
+#         train=True, validation=False, eval=False)
 
-run(args, model_name, train_dir, filedir,
-        HEIGTH, WIDTH, BATCH_SIZE, EPOCHS, l_r,
-        validation_dir,
-        train=False, validation=False, eval=True)
+train_model(model_name, train_dir,
+    HEIGTH, WIDTH, BATCH_SIZE, EPOCHS,
+    validation_dir, train=True)
