@@ -61,12 +61,8 @@ def run(args, model_name, train_dir, filedir,
     if eval:
         for filename in os.listdir(filedir):
             run_example(model, filedir+filename,HEIGTH,WIDTH)
-#
-# run(args, model_name, train_dir, filedir,
-#         HEIGTH, WIDTH, BATCH_SIZE, EPOCHS, l_r,
-#         validation_dir,
-#         train=True, validation=False, eval=False)
 
-train_model(model_name, train_dir,
-    HEIGTH, WIDTH, BATCH_SIZE, EPOCHS,
-    validation_dir, train=True)
+run(args, model_name, train_dir, filedir,
+        HEIGTH, WIDTH, BATCH_SIZE, EPOCHS, l_r,
+        validation_dir,
+        train=True, validation=False, eval=False)
